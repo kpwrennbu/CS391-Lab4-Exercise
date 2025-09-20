@@ -27,7 +27,7 @@ Render all **151 Kanto Pokémon** in a responsive grid **after pressing a button
 
 ---
 
-## 0) Prereqs & Setup (everyone does this)
+## 0) Prereqs & Setup (Skip to part C, go back up to the top if you have any problems)
 
 ### A. Check Node.js version
 
