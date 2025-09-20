@@ -38,7 +38,7 @@ Run:
 node -v
 ```
 
-* If it prints something like `v18.x.x`: you must upgrade.
+* If it prints something like `v18.x.x`: you must upgrade. Write down your older node version as you might need to switch back to it later
 
 **Fastest fix with nvm (recommended):**
 
