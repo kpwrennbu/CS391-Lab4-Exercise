@@ -1,11 +1,35 @@
+Perfect 👍 — let’s update the README so it tells your students to **fork + clone via SSH** (not HTTPS). I’ll also remove the old “Unzip the starter” section so it’s fully fork-based.
+
+Here’s the cleaned up README.md:
+
+---
+
 # 🧪 React Lab: Kanto Pokédex (151)
 
-## Goal
+## 🔗 How to Start (Fork & Clone with SSH)
+
+1. Go to the GitHub repo link your TA shared.
+2. Click the **Fork** button (top right) to copy it to your own GitHub account.
+3. On your fork’s page, click the green **Code** button → choose **SSH**.
+4. Copy the SSH link (it looks like `git@github.com:<your-username>/pokedex-lab-starter.git`).
+5. In your terminal, clone your fork:
+
+   ```bash
+   git clone git@github.com:<your-username>/pokedex-lab-starter.git
+   cd pokedex-lab-starter
+   ```
+6. Follow the setup steps below.
+
+> ⚠️ If you’ve never set up SSH with GitHub, see [GitHub’s docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) to add your SSH key first.
+
+---
+
+## 🎯 Goal
 
 Render all **151 Kanto Pokémon** in a responsive grid **after pressing a button**. You’ll complete the TODOs in two files:
 
-* `src/components/Pokedex.jsx` (main container & data fetching)&#x20;
-* `src/components/PokemonCard.jsx` (child card, props)&#x20;
+* `src/components/Pokedex.jsx` (main container & data fetching)
+* `src/components/PokemonCard.jsx` (child card, props)
 
 ---
 
@@ -35,12 +59,7 @@ node -v   # should be >= v22.12.0
 
 > Tip: To switch back later, run `nvm use 18` (or whatever you had).
 
-### B. Unzip the starter
-
-1. Download and unzip the file your TA provided.
-2. `cd` into the project folder in your terminal.
-
-### C. Install dependencies
+### B. Install dependencies
 
 Inside the project:
 
@@ -50,7 +69,7 @@ npm install
 
 > If you see errors about Node version, go back to step **A**.
 
-### D. Run the dev server
+### C. Run the dev server
 
 ```bash
 npm run dev
@@ -82,18 +101,18 @@ This file sets up:
 * A `useEffect` that fetches **once** after you press the button
 * Renders a button, states, and the grid of `PokemonCard`s
 
-Follow the inline comments labeled **TODO Step 1…13** to complete the logic and rendering.&#x20;
+Follow the inline comments labeled **TODO Step 1…13** to complete the logic and rendering.
 
 Key ideas you’ll practice:
 
 * `useState` for UI state
-* `useEffect` with a **dependency array** (`[started]`) so the fetch triggers **after** the button press (be ready to explain “why only when `started` changes?” in discussion)
+* `useEffect` with a **dependency array** (`[started]`) so the fetch triggers **after** the button press
 * Mapping fetched data into `{ id, name, sprite }`
 * Conditional rendering for **loading** and **error**
 
 ### `src/components/PokemonCard.jsx` (complete the TODO)
 
-This child component receives **props** and renders a simple card with the sprite as the **background** and the Pokémon’s **id** and **name**. Fill in the two “hmmm…” lines with the correct values from `props`. (Hint in the file shows how to access `props.sprite`.)&#x20;
+This child component receives **props** and renders a simple card with the sprite as the **background** and the Pokémon’s **id** and **name**. Fill in the two “hmmm…” lines with the correct values from `props`. (Hint in the file shows how to access `props.sprite`.)
 
 ---
 
@@ -101,25 +120,25 @@ This child component receives **props** and renders a simple card with the sprit
 
 1. **Open `src/components/Pokedex.jsx`**
 
-   * Implement **TODO Step 2a–2d**: define all the states (`started`, `pokemon`, `loading`, `error`).&#x20;
-   * In the `useEffect`, implement **Step 3** early-return when not started.&#x20;
+   * Implement **TODO Step 2a–2d**: define all the states (`started`, `pokemon`, `loading`, `error`).
+   * In the `useEffect`, implement **Step 3** early-return when not started.
    * Inside `loadKanto151()`:
 
-     * **Step 4**: set `error=""`, `loading=true`, `pokemon=[]`.&#x20;
-     * **Step 5**: `fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")`, then `await res.json()`. (You can assume 200 OK for this lab; a robust version would check `res.ok`.)&#x20;
-     * **Next**: map results to `{ id, name, sprite }`. The file shows the URL trick to derive `id` from `p.url`, and to build the sprite URL. Save into `list`.&#x20;
-     * **Step 6**: `setPokemon(list)`; **Step 7–8**: set error if needed and stop loading in `finally`.&#x20;
-   * **Step 9**: call `loadKanto151()`; **Step 10**: dependency array `[started]`.&#x20;
-   * **Step 11–12**: wire the button `onClick={() => setStarted(true)}` and show button text conditionally (Loaded vs Load). Show loading & error messages.&#x20;
-   * **Step 13**: map `pokemon` to `<PokemonCard … />` with `key`, `id`, `name`, and `sprite` props.&#x20;
+     * **Step 4**: set `error=""`, `loading=true`, `pokemon=[]`.
+     * **Step 5**: `fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")`, then `await res.json()`.
+     * **Next**: map results to `{ id, name, sprite }`.
+     * **Step 6**: `setPokemon(list)`; **Step 7–8**: handle error/loading.
+   * **Step 9**: call `loadKanto151()`; **Step 10**: dependency array `[started]`.
+   * **Step 11–12**: wire the button and show conditional text (Loaded vs Load).
+   * **Step 13**: map `pokemon` to `<PokemonCard … />` with `key`, `id`, `name`, and `sprite`.
 
 2. **Open `src/components/PokemonCard.jsx`**
 
    * Replace the “hmmm…” placeholders with the real values from `props`:
 
-     * Top line should render the **padded id** like `#001` (you can use `String(props.id).padStart(3, "0")`)
-     * Second line should render the **capitalized name**; a simple way is CSS `textTransform: "capitalize"` (already provided).
-   * Confirm background is using `props.sprite` (already scaffolded).&#x20;
+     * Top line → **padded id** like `#001`
+     * Second line → Pokémon **name** (CSS capitalize is already provided).
+   * Confirm background is using `props.sprite`.
 
 3. **Run & Test**
 
@@ -128,21 +147,11 @@ This child component receives **props** and renders a simple card with the sprit
 
 ---
 
-## 3) Common Errors & Quick Fixes
+## 3) Common Errors & Fixes
 
-* **`vite: command not found`** after `npm run dev`
-
-  * You probably skipped `npm install`, or your Node version prevented Vite from installing.
-  * Fix: run `node -v` (must be 20.19+ or 22.12+), then `npm install`, then `npm run dev`.
-
-* **`Error: Failed to load Pokémon` shows up**
-
-  * Network hiccup or rate-limit. Just click the button again, or refresh the page and retry.
-
-* **Blank page / Red screen**
-
-  * Check the browser devtools **Console** for the first error line.
-  * Typical mistakes: a missing prop name (e.g., `sprite` spelled `sprtie`), forgetting to return JSX, or not exporting default components.
+* **`vite: command not found`** → Run `npm install` again, verify Node version.
+* **`Error: Failed to load Pokémon`** → Try again; API may have rate-limited.
+* **Blank page / Red screen** → Check console for typos (e.g., `sprtie` instead of `sprite`).
 
 ---
 
@@ -157,16 +166,18 @@ This child component receives **props** and renders a simple card with the sprit
 
 ## 5) Stretch Ideas (optional)
 
-* Add a **“Reset”** button to clear the grid and allow re-loading.
-* Show a **count badge**: “Showing 151”.
-* Make cards focusable/accessible (keyboard tab outlines, `aria-label` including name/id).
+* Add a **Reset** button.
+* Show a **count badge** like “Showing 151”.
+* Style the cards with colors or type badges.
 
 ---
 
-## 6) Reflection Questions (for discussion)
+## 6) Reflection Questions
 
-* Why does `useEffect` depend on `[started]` instead of `[]`? What would happen if it were `[]`?&#x20;
-* Where do we **derive** the Pokémon ID from, and why is that efficient?&#x20;
-* What are the trade-offs of using the sprite **as a background image** vs an `<img>` tag?&#x20;
+* Why does `useEffect` depend on `[started]` instead of `[]`?
+* How do we derive the Pokémon ID from the API data?
+* What are the trade-offs of using a sprite as a **background image** vs an `<img>` tag?
 
 ---
+
+Do you want me to also **add a GitHub Classroom version** (so they don’t even have to manually fork) in case you want auto-submission/grading?
