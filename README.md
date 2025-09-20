@@ -155,7 +155,7 @@ This child component receives **props** and renders a simple card with the sprit
 * [ ] Each card shows **#id** (3-digit padded) and **name**
 * [ ] No extra console errors
 * [ ] Code compiles with `npm run dev`
-
+* [ ] NOTE: go back to previous node version if you switched it above
 ---
 
 ## 5) Stretch Ideas (optional)
@@ -173,5 +173,3 @@ This child component receives **props** and renders a simple card with the sprit
 * What are the trade-offs of using a sprite as a **background image** vs an `<img>` tag?
 
 ---
-
-Do you want me to also **add a GitHub Classroom version** (so they don’t even have to manually fork) in case you want auto-submission/grading?
