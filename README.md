@@ -1,9 +1,3 @@
-Perfect 👍 — let’s update the README so it tells your students to **fork + clone via SSH** (not HTTPS). I’ll also remove the old “Unzip the starter” section so it’s fully fork-based.
-
-Here’s the cleaned up README.md:
-
----
-
 # 🧪 React Lab: Kanto Pokédex (151)
 
 ## 🔗 How to Start (Fork & Clone with SSH)
